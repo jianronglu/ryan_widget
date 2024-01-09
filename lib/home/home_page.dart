@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:widget01/home/view/home_banner_view.dart';
-import 'package:widget01/home/model/home_view_model.dart';
+import '../home/view/home_banner_view.dart';
+import '../home/model/home_view_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

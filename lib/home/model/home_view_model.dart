@@ -20,6 +20,5 @@ class HomeViewModel {
     'Kiwi fruit',
     'Blueberry',
   ];
-
 }
 
