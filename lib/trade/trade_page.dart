@@ -10,7 +10,7 @@ class TradePage extends StatefulWidget {
 class _TradePageState extends State<TradePage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('交易'),
     );
   }

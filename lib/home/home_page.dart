@@ -14,9 +14,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('首页'),
+        title: const Text('首页'),
       ),
-      body: Center(
+      body: const Center(
         child: HomeBannerView(
           items: HomeViewModel.bannerItems,
         ),

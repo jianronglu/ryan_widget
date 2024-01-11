@@ -7,7 +7,7 @@ class HomeBannerView extends StatefulWidget {
   final int? delay;
   final double? viewportFraction;
 
-  HomeBannerView({
+  const HomeBannerView({
     super.key,
     required this.items,
     this.delay,
@@ -25,7 +25,7 @@ class _HomeBannerViewState extends BasePageState<HomeBannerView>
   late PageController _controller;
   int _pagePosition = 0;
 
-  int _getAutoScrollPositon() {
+  int _getAutoScrollPosition() {
     return (_pagePosition == widget.items.length-1) ? 0: _pagePosition+1;
   }
 
@@ -37,7 +37,7 @@ class _HomeBannerViewState extends BasePageState<HomeBannerView>
     if (!_isTimeRunning) {
       _isTimeRunning = true;
       _timer = Timer.periodic(Duration(seconds: widget.delay ?? 5), (timer) {
-        final position = _getAutoScrollPositon();
+        final position = _getAutoScrollPosition();
         _controller.animateToPage(position,
             duration: Duration(milliseconds: _getMilliseconds(position)),
             curve: Curves.easeInOut);
@@ -53,9 +53,8 @@ class _HomeBannerViewState extends BasePageState<HomeBannerView>
   }
 
   void _onPageChanged(int index) {
-    final pasition = index % widget.items.length;
     setState(() {
-      _pagePosition = pasition;
+      _pagePosition = index;
     });
   }
 
@@ -64,6 +63,7 @@ class _HomeBannerViewState extends BasePageState<HomeBannerView>
     _controller =
         PageController(viewportFraction: widget.viewportFraction ?? 1);
     _startTimer();
+    super.initState();
   }
 
   @override
@@ -76,9 +76,7 @@ class _HomeBannerViewState extends BasePageState<HomeBannerView>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-    print('didChangeAppLifecycleState:$state');
     if (state == AppLifecycleState.resumed) {
-      print('startTimer');
       _startTimer();
     } else if (state == AppLifecycleState.paused) {
       _stopTimer();
@@ -99,8 +97,8 @@ class _HomeBannerViewState extends BasePageState<HomeBannerView>
             color: Colors.grey,
             alignment: Alignment.center,
             child: Text(
-              '${widget.items[position]}',
-              style: TextStyle(color: Colors.red, fontSize: 50),
+              widget.items[position],//不必使用插值法
+              style: const TextStyle(color: Colors.red, fontSize: 50),
             ),
           );
         });
