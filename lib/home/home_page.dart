@@ -21,25 +21,43 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _createGridItem(int index) {
-    return Container(
-      color: Colors.red,
-      margin: const EdgeInsets.all(NumberConstant.gridViewMargin),
-      alignment: Alignment.center,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          IconButton(
-              onPressed: () {
-                print('click $index');
-              },
-              icon: Icon(Icons.add)),
-          Expanded(
-            child: Text(
-              HomeViewModel.bannerItems[index],
-              style: TextStyle(color: Colors.white, fontSize: 30),
+    return GestureDetector(
+      onTap: (){
+        print(HomeViewModel.gridViewItems[index].title);
+      },
+      child: Container(
+        color: Colors.red,
+        margin: const EdgeInsets.all(NumberConstant.gridViewMargin),
+        alignment: Alignment.center,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              flex: 2,
+              child: SizedBox(
+                width: 20,
+                height: 20,
+                child: Image(image: AssetImage(HomeViewModel.gridViewItems[index].iconName ?? ''),),
+              ),
+              // child: IconButton(
+              //     onPressed: () {},
+              //     icon: Icon(Icons.add)),
             ),
-          ),
-        ],
+            Expanded(
+              flex: 1,//icon 和 text 2:1填充控件
+              child: Text(
+                HomeViewModel.gridViewItems[index].title ?? StringConstant.def,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: NumberConstant.textFont_14,),
+                overflow: TextOverflow.fade,//溢出无色
+                softWrap: false,
+                textAlign: TextAlign.center,
+                textDirection: TextDirection.ltr,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -48,10 +66,10 @@ class _HomePageState extends State<HomePage> {
     return Container(
       height: NumberConstant.homePageCridViewHeight,
       child: GridView.builder(
-          physics: NeverScrollableScrollPhysics(),//禁止弹动
+          physics: NeverScrollableScrollPhysics(), //禁止弹动
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: NumberConstant.homePageGridViewDelegateItemCount),
-          itemCount: HomeViewModel.bannerItems.length,
+          itemCount: HomeViewModel.gridViewItems.length,
           itemBuilder: (BuildContext content, int index) =>
               _createGridItem(index)),
     );
