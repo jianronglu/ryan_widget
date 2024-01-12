@@ -28,13 +28,13 @@ class HomeViewModel {
   ];
 
   static List<GridViewItemModel> gridViewItems = [
-    GridViewItemModel('一键打新', ImageConstant.image_yjdx),
-    GridViewItemModel('极速开户', ImageConstant.image_jskh),
-    GridViewItemModel('投资日历', ImageConstant.image_tzrl),
-    GridViewItemModel('量化选股', ImageConstant.image_lhxg),
-    GridViewItemModel('策略诊股', ImageConstant.image_clzg),
-    GridViewItemModel('收益凭证', ImageConstant.image_sypz),
-    GridViewItemModel('高端理财', ImageConstant.image_gdlc),
-    GridViewItemModel('投顾签约', ImageConstant.image_tgqy),
+    GridViewItemModel('一键打新', ImageConstant.yjdx),
+    GridViewItemModel('极速开户', ImageConstant.jskh),
+    GridViewItemModel('投资日历', ImageConstant.tzrl),
+    GridViewItemModel('量化选股', ImageConstant.lhxg),
+    GridViewItemModel('策略诊股', ImageConstant.clzg),
+    GridViewItemModel('收益凭证', ImageConstant.sypz),
+    GridViewItemModel('高端理财', ImageConstant.gdlc),
+    GridViewItemModel('投顾签约', ImageConstant.tgqy),
   ];
 }

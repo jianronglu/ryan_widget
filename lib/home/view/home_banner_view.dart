@@ -10,7 +10,7 @@ class HomeBannerView extends StatefulWidget {
   const HomeBannerView({
     super.key,
     required this.items,
-    this.delay,
+    this.delay = 3,
     this.viewportFraction,
   });
 
@@ -36,7 +36,7 @@ class _HomeBannerViewState extends BasePageState<HomeBannerView>
   void _startTimer() {
     if (!_isTimeRunning) {
       _isTimeRunning = true;
-      _timer = Timer.periodic(Duration(seconds: widget.delay ?? 5), (timer) {
+      _timer = Timer.periodic(Duration(seconds: widget.delay!), (timer) {
         final position = _getAutoScrollPosition();
         _controller.animateToPage(position,
             duration: Duration(milliseconds: _getMilliseconds(position)),
