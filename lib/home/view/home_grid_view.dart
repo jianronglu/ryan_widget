@@ -48,25 +48,10 @@ class GridViewItem extends StatelessWidget {
 }
 
 class HomeGridView extends StatefulWidget {
-  final List<GridViewItemModel> items;
-  final double? width;
-  final double? height;
-  final EdgeInsetsGeometry? margin;
-  final double crossAxisSpacing;
-  final int crossAxisCount;
-  final double mainAxisSpacing;
-  final double childAspectRatio; //宽高比
-
+  final GridViewConfig config;
   const HomeGridView({
     Key? key,
-    this.width,
-    this.height,
-    required this.items,
-    this.margin,
-    this.crossAxisSpacing = 0,
-    required this.crossAxisCount,
-    this.mainAxisSpacing = 0,
-    this.childAspectRatio = 1,
+    required this.config,
   }) : super(key: key);
 
   @override
@@ -76,8 +61,8 @@ class HomeGridView extends StatefulWidget {
 class _HomeGrideViewState extends State<HomeGridView> {
 
   Widget _createGridItem(int index) {
-    final title = HomeViewModel.gridViewItems[index].title;
-    final iconName = HomeViewModel.gridViewItems[index].iconName;
+    final title = widget.config.items[index].title;
+    final iconName = widget.config.items[index].iconName;
     return GestureDetector(
       onTap: () {
         print(title);
@@ -97,16 +82,16 @@ class _HomeGrideViewState extends State<HomeGridView> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black,
-      margin: widget.margin,
+      margin: widget.config.margin,
       child: GridView.builder(
           physics: NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: widget.crossAxisCount,
-            crossAxisSpacing: widget.crossAxisSpacing, //水平间距
-            mainAxisSpacing: widget.mainAxisSpacing, //
-            childAspectRatio: widget.childAspectRatio, //宽高比
+            crossAxisCount: widget.config.crossAxisCount,
+            crossAxisSpacing: widget.config.crossAxisSpacing, //水平间距
+            mainAxisSpacing: widget.config.mainAxisSpacing, //
+            childAspectRatio: widget.config.childAspectRatio, //宽高比
           ),
-          itemCount: widget.items.length,
+          itemCount: widget.config.items.length,
           itemBuilder: (BuildContext context, int index) =>
               _createGridItem(index)),
     );

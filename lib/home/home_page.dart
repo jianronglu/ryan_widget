@@ -23,20 +23,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _createGridView() {
-    final _crossAxisCount = 4;
-    final _margin  = EdgeInsets.fromLTRB(15, 2, 15, 2);
-    final _itemWith = (MediaQuery.of(context).size.width - _margin.left - _margin.right) / _crossAxisCount;
-    final _spacing = 5.0;
-    final _ratio = 1.0;
+    final GridViewConfig config = HomeViewModel.getDefaultConfig(context);
     return SizedBox(
-      height: _itemWith * 2,
+      height: config.getViewHeight(),
       child: HomeGridView(
-        items: HomeViewModel.gridViewItems,
-        crossAxisCount: _crossAxisCount,
-        mainAxisSpacing: _spacing,
-        crossAxisSpacing: _spacing,
-        childAspectRatio: _ratio,
-        margin: _margin,
+        config: config,
       ),
     );
   }
