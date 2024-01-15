@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../../constants/common_constant.dart';
 
@@ -6,6 +5,11 @@ class BannerModel {
   String? title;
   FontStyle? style;
   MaterialColor? itemBackgroundColor;
+  BannerModel({
+    this.title,
+    this.style,
+    this.itemBackgroundColor,
+  });
 }
 
 class GridViewItemModel {
@@ -37,9 +41,38 @@ class GridViewConfig {
     return (MediaQuery.of(context).size.width - margin!.left - margin!.right) /
         crossAxisCount;
   }
+
   double getViewHeight() {
     return getItemWith() * 2;
   }
+}
+
+class TabItemModel {
+  final String title;
+  final IconData icon;
+  TabItemModel(this.title, this.icon);
+}
+
+class TextModel {
+  final String hintText;
+  final TextStyle? hintStyle;
+  final String text;
+  final TextStyle? style;
+  final int? maxLines;
+  final TextAlign? textAlign;
+  final double? textScaleFactor;
+  final TextOverflow? overflow;
+
+  TextModel({
+    required this.hintText,
+    this.hintStyle,
+    required this.text,
+    this.style,
+    this.maxLines,
+    this.textAlign,
+    this.textScaleFactor,
+    this.overflow,
+  });
 }
 
 class HomeViewModel {
@@ -67,7 +100,7 @@ class HomeViewModel {
     GridViewItemModel('投顾签约', ImageConstant.tgqy),
   ];
 
-  static getDefaultConfig(BuildContext context) {
+  static GridViewConfig getDefaultConfig(BuildContext context) {
     return GridViewConfig(
       context: context,
       margin: EdgeInsets.symmetric(vertical: 2, horizontal: 15),
@@ -76,6 +109,18 @@ class HomeViewModel {
       mainAxisSpacing: 5.0,
       crossAxisSpacing: 5.0,
       items: gridViewItems,
+    );
+  }
+
+  static TextModel longTextModel() {
+    return TextModel(
+      hintText: '长文本显示(限制2行)',
+      hintStyle: TextStyle(fontSize: 18, color: Colors.pink),
+      text:
+          '文本的对齐方式；可以选择左对齐、右对齐还是居中。注意，对齐的参考系是Text widget 本身。本例中虽然是指定了居中对齐，但因为 Text 文本内容宽度不足一行，Text 的宽度和文本内容长度相等，那么这时指定对齐方式是没有意义的，只有 Text 宽度大于文本内容长度时指定此属性才有意义。',
+      maxLines: 2,
+      textScaleFactor: 1.0, //MediaQueryData.textScaleFactor 默认值
+      overflow: TextOverflow.ellipsis, //显示...
     );
   }
 }

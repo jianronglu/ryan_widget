@@ -97,7 +97,7 @@ class _HomeBannerViewState extends BasePageState<HomeBannerView>
             color: Colors.grey,
             alignment: Alignment.center,
             child: Text(
-              widget.items[position],//不必使用插值法
+              widget.items[position],
               style: const TextStyle(color: Colors.red, fontSize: 50),
             ),
           );

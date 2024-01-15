@@ -15,4 +15,3 @@ class SGZQ extends StatelessWidget {
     );
   }
 }
-

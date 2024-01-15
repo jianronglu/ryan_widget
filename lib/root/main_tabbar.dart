@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../root/main_tabbar_model.dart';
+import '../home/model/home_view_model.dart';
 import '../home/home_page.dart';
 import '../trade/trade_page.dart';
 import '../market/market_page.dart';
+import '../widget/widget_scroll_page.dart';
 
 class MainTabBarCtrl extends StatefulWidget {
   const MainTabBarCtrl({Key? key}) : super(key: key);
@@ -18,12 +19,14 @@ class _MainTabBarCtrlState extends State<MainTabBarCtrl> {
     const HomePage(),
     const MarketPage(),
     const TradePage(),
+    const WidgeKnowledge(),
   ];
 
-  final List<MainItemModel> _items = [
-    MainItemModel('首页', Icons.add),
-    MainItemModel('行情', Icons.history),
-    MainItemModel('交易', Icons.search_rounded),
+  final List<TabItemModel> _items = [
+    TabItemModel('首页', Icons.add),
+    TabItemModel('行情', Icons.history),
+    TabItemModel('交易', Icons.search_rounded),
+    TabItemModel('组件', Icons.icecream),
   ];
 
   Widget createBottomNavigationBar() {
@@ -31,8 +34,7 @@ class _MainTabBarCtrlState extends State<MainTabBarCtrl> {
       currentIndex: _currentPage,
       iconSize: 30.0,
       fixedColor: Colors.red,
-
-      onTap: (int page){
+      onTap: (int page) {
         setState(() {
           _currentPage = page;
         });
@@ -59,6 +61,3 @@ class _MainTabBarCtrlState extends State<MainTabBarCtrl> {
     );
   }
 }
-
-
-
