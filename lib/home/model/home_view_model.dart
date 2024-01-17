@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../constants/common_constant.dart';
+import '../../router/router.dart';
 
 class BannerModel {
   String? title;
@@ -75,6 +76,12 @@ class TextModel {
   });
 }
 
+class SingleScrollModel{
+  final String title;
+  final String router;
+  SingleScrollModel(this.title, this.router);
+}
+
 class HomeViewModel {
   static const List<String> bannerItems = [
     'Apple',
@@ -100,10 +107,17 @@ class HomeViewModel {
     GridViewItemModel('投顾签约', ImageConstant.tgqy),
   ];
 
+  static List<SingleScrollModel> scrollItems = [
+    SingleScrollModel('WidgetText', RouterUtil.routerWidgetText),
+    SingleScrollModel('WidgetButton', RouterUtil.routerWidgetButton),
+    SingleScrollModel('Checkbox Switch', RouterUtil.routerCheckboxSwitch),
+    SingleScrollModel('TextField', RouterUtil.routerTextField),
+  ];
+
   static GridViewConfig getDefaultConfig(BuildContext context) {
     return GridViewConfig(
       context: context,
-      margin: EdgeInsets.symmetric(vertical: 2, horizontal: 15),
+      margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 15),
       crossAxisCount: 4,
       childAspectRatio: 1,
       mainAxisSpacing: 5.0,
@@ -115,7 +129,7 @@ class HomeViewModel {
   static TextModel longTextModel() {
     return TextModel(
       hintText: '长文本显示(限制2行)',
-      hintStyle: TextStyle(fontSize: 18, color: Colors.pink),
+      hintStyle: const TextStyle(fontSize: 18, color: Colors.pink),
       text:
           '文本的对齐方式；可以选择左对齐、右对齐还是居中。注意，对齐的参考系是Text widget 本身。本例中虽然是指定了居中对齐，但因为 Text 文本内容宽度不足一行，Text 的宽度和文本内容长度相等，那么这时指定对齐方式是没有意义的，只有 Text 宽度大于文本内容长度时指定此属性才有意义。',
       maxLines: 2,

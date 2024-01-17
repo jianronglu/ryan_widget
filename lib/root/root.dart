@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../root/main_tabbar.dart';
+import '../router/router.dart';
 
 class SGZQ extends StatelessWidget {
   const SGZQ({super.key});
@@ -7,11 +7,12 @@ class SGZQ extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '申港',
+      initialRoute: RouterUtil.routerMainTab,
+      routes: getRouters(context),
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const MainTabBarCtrl(),
+      debugShowCheckedModeBanner: false,//是否显示右上角debug
     );
   }
 }

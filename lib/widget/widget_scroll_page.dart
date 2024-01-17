@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../home/model/home_view_model.dart';
 import '../base/base_page_state.dart';
-import 'sub_page/widge_text.dart';
 
 class WidgeKnowledge extends StatefulWidget {
   const WidgeKnowledge({Key? key}) : super(key: key);
@@ -10,21 +10,28 @@ class WidgeKnowledge extends StatefulWidget {
 }
 
 class _WidgeKnowledgeState extends BasePageState<WidgeKnowledge> {
-  List<String> _items = ['WidgetText', 'CustomScrollView'];
-  Widget _createItem(String value) {
+  final List<SingleScrollModel> _items = HomeViewModel.scrollItems;
+  Widget _createItem(SingleScrollModel item) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => TextWidgeDemo()),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => TextWidgeDemo()),
+        // );
+        Navigator.pushNamed(context, item.router);
       },
-      child: SizedBox(
-        height: 44.0,
-        child: Text(
-          value,
-          style: TextStyle(fontSize: 30),
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 44.0,
+            child: Text(
+              item.title,
+              style: const TextStyle(fontSize: 30),
+            ),
+          ),
+          const Divider(),
+        ],
       ),
     );
   }
@@ -33,8 +40,8 @@ class _WidgeKnowledgeState extends BasePageState<WidgeKnowledge> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.all(15),
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start, //左对齐
           children: _items.map((e) => _createItem(e)).toList(),

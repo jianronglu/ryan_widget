@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
   }
 
  Widget _createListView() {
-    return HomeNewsList(items: HomeViewModel.bannerItems);
+    return const HomeNewsList(items: HomeViewModel.bannerItems);
  }
 
   Widget _createBody() {

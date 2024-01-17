@@ -1,7 +1,7 @@
 class NumberConstant {
   static const double bannerHeight = 200.0;
   static const int gridDelegateItemCount = 4;
-  static const double homePageCridViewHeight = 250.0;
+  static const double homePageGridViewHeight = 250.0;
   static const double gridViewMargin = 1.0;
   static const double textFont_14 = 14.0;
 }

@@ -23,7 +23,7 @@ abstract class BasePageState<T extends StatefulWidget> extends State<T>
   }
 
   Widget createBody(BuildContext context) {
-    return Placeholder();
+    return const Placeholder();
   }
 
   TextStyle getStyle() {
