@@ -10,6 +10,16 @@ class WidgeKnowledge extends StatefulWidget {
 }
 
 class _WidgeKnowledgeState extends BasePageState<WidgeKnowledge> {
+  @override
+  String getTitle() {
+    return 'Widget List';
+  }
+
+  @override
+  bool showBackBtn() {
+    return false;
+  }
+
   final List<SingleScrollModel> _items = HomeViewModel.scrollItems;
   Widget _createItem(SingleScrollModel item) {
     return GestureDetector(
@@ -37,15 +47,13 @@ class _WidgeKnowledgeState extends BasePageState<WidgeKnowledge> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start, //左对齐
-          children: _items.map((e) => _createItem(e)).toList(),
-        ),
+  Widget createBody(BuildContext context) {
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      padding: const EdgeInsets.all(15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start, //左对齐
+        children: _items.map((e) => _createItem(e)).toList(),
       ),
     );
   }

@@ -14,7 +14,7 @@ class _CheckboxSwitchState extends BasePageState<CheckboxSwitch> {
 
   @override
   String getTitle() {
-    return 'checkbox switch';
+    return 'Checkbox & Switch';
   }
 
   @override

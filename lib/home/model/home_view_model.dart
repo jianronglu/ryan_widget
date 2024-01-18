@@ -110,8 +110,8 @@ class HomeViewModel {
   static List<SingleScrollModel> scrollItems = [
     SingleScrollModel('WidgetText', RouterUtil.routerWidgetText),
     SingleScrollModel('WidgetButton', RouterUtil.routerWidgetButton),
-    SingleScrollModel('Checkbox Switch', RouterUtil.routerCheckboxSwitch),
-    SingleScrollModel('TextField', RouterUtil.routerTextField),
+    SingleScrollModel('Checkbox & Switch', RouterUtil.routerCheckboxSwitch),
+    SingleScrollModel('TextField & Form', RouterUtil.routerTextField),
   ];
 
   static GridViewConfig getDefaultConfig(BuildContext context) {

@@ -32,9 +32,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
- Widget _createListView() {
+  Widget _createListView() {
     return const HomeNewsList(items: HomeViewModel.bannerItems);
- }
+  }
 
   Widget _createBody() {
     return Column(
@@ -44,7 +44,10 @@ class _HomePageState extends State<HomePage> {
       children: <Widget>[
         _createBannerView(),
         _createGridView(),
-        Expanded(child: _createListView()),
+        Expanded(
+          child: _createListView(),
+          flex: 1,
+        ),
       ],
     );
   }

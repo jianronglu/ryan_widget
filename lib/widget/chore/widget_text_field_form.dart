@@ -17,7 +17,7 @@ class _TextFieldDemoState extends BasePageState<TextFieldDemo> {
 
   @override
   String getTitle() {
-    return 'TextField';
+    return 'TextField & Form';
   }
 
   @override
@@ -46,6 +46,21 @@ class _TextFieldDemoState extends BasePageState<TextFieldDemo> {
   }
 
   @override
+  void dispose() {
+    keyboardHidden();
+    super.dispose();
+  }
+
+  void keyboardHidden() {
+    _nameFocusNode.unfocus();
+    _pwdFocusNode.unfocus();
+  }
+
+  void keybordShow() {
+    _nameFocusNode.requestFocus();
+  }
+
+  @override
   Widget createBody(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(15),
@@ -56,19 +71,7 @@ class _TextFieldDemoState extends BasePageState<TextFieldDemo> {
             autofocus: true, //聚焦
             focusNode: _nameFocusNode,
             keyboardType: TextInputType.text, //键盘类型
-            decoration: InputDecoration(
-              labelText: '用户名',
-              labelStyle: TextStyle(color: Colors.black),
-              hintText: '请输入用户名',
-              hintStyle: TextStyle(color: Colors.grey),
-              prefixIcon: Icon(Icons.person),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.blue),
-              ),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey),
-              ),
-            ),
+            decoration: _createDecoration('姓名','请输入姓名', Icons.person),
           ),
           TextField(
             //controller:_pwdController,
@@ -79,32 +82,32 @@ class _TextFieldDemoState extends BasePageState<TextFieldDemo> {
             autofocus: false,
             focusNode: _pwdFocusNode,
             keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              labelText: '密码',
-              labelStyle: TextStyle(color: Colors.black),
-              hintText: '请输入登录密码',
-              hintStyle: TextStyle(color: Colors.grey),
-              prefixIcon: Icon(Icons.lock),
-              focusedBorder: UnderlineInputBorder(
-                //获得焦点
-                borderSide: BorderSide(color: Colors.blue),
-              ),
-              enabledBorder: UnderlineInputBorder(
-                //未获得焦点
-                borderSide: BorderSide(color: Colors.grey),
-              ),
-              // border: InputBorder.none,//隐藏下划线
-            ),
+            decoration: _createDecoration('密码', '请输入密码', Icons.lock),
           ),
           ElevatedButton(
             child: Text('登录'),
             onPressed: () {
-              _pwdFocusNode.unfocus();
-              _pwdFocusNode.unfocus();
+              keyboardHidden();
               print('name:$_nameText, pwd:$_pwdText');
             },
           ),
         ],
+      ),
+    );
+  }
+
+  InputDecoration _createDecoration(String labelText, String hintText, IconData iconData) {
+    return InputDecoration(
+      labelText: labelText,
+      labelStyle: TextStyle(color: Colors.grey),
+      hintText: hintText,
+      hintStyle: const TextStyle(color: Colors.grey),
+      prefixIcon:  Icon(iconData),
+      focusedBorder: UnderlineInputBorder(
+        borderSide: const BorderSide(color: Colors.grey),
+      ),
+      enabledBorder: UnderlineInputBorder(
+        borderSide: const BorderSide(color: Colors.grey),
       ),
     );
   }
