@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widget/chore/widget_text_field_form.dart';
+import '../widget/chore/widget_form.dart';
+import '../widget/chore/widget_text_field.dart';
 import '../root/main_tab_bar.dart';
 import '../market/market_page.dart';
 import '../trade/trade_page.dart';
@@ -17,6 +18,7 @@ class RouterUtil {
   static const String routerSingleScroll = '/singleScroll';
   static const String routerCheckboxSwitch = '/routerCheckboxSwitch';
   static const String routerTextField = '/textField';
+  static const String routerForm = '/routerForm';
 }
 
 Map<String, WidgetBuilder> getRouters(BuildContext context) {
@@ -29,5 +31,6 @@ Map<String, WidgetBuilder> getRouters(BuildContext context) {
     RouterUtil.routerSingleScroll: (context) => const WidgeKnowledge(),
     RouterUtil.routerCheckboxSwitch:(context) => const CheckboxSwitch(),
     RouterUtil.routerTextField:(context) => const TextFieldDemo(),
+    RouterUtil.routerForm:(context) => const FormDemo(),
   };
 }

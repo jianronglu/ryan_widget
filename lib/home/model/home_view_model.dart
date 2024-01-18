@@ -111,7 +111,8 @@ class HomeViewModel {
     SingleScrollModel('WidgetText', RouterUtil.routerWidgetText),
     SingleScrollModel('WidgetButton', RouterUtil.routerWidgetButton),
     SingleScrollModel('Checkbox & Switch', RouterUtil.routerCheckboxSwitch),
-    SingleScrollModel('TextField & Form', RouterUtil.routerTextField),
+    SingleScrollModel('TextField', RouterUtil.routerTextField),
+    SingleScrollModel('Form', RouterUtil.routerForm),
   ];
 
   static GridViewConfig getDefaultConfig(BuildContext context) {

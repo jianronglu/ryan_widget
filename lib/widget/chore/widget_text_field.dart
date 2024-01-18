@@ -57,41 +57,48 @@ class _TextFieldDemoState extends BasePageState<TextFieldDemo> {
   }
 
   void keybordShow() {
-    _nameFocusNode.requestFocus();
+    if(!_nameFocusNode.hasFocus) {
+      _nameFocusNode.requestFocus();
+    }
   }
 
   @override
   Widget createBody(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(15),
-      child: Column(
-        children: [
-          TextField(
-            controller: _nameController, //使用controller 监听变化
-            autofocus: true, //聚焦
-            focusNode: _nameFocusNode,
-            keyboardType: TextInputType.text, //键盘类型
-            decoration: _createDecoration('姓名','请输入姓名', Icons.person),
-          ),
-          TextField(
-            //controller:_pwdController,
-            onChanged: (value) {
-              //使用 onChanged 监听变化
-              _pwdText = value;
-            },
-            autofocus: false,
-            focusNode: _pwdFocusNode,
-            keyboardType: TextInputType.number,
-            decoration: _createDecoration('密码', '请输入密码', Icons.lock),
-          ),
-          ElevatedButton(
-            child: Text('登录'),
-            onPressed: () {
-              keyboardHidden();
-              print('name:$_nameText, pwd:$_pwdText');
-            },
-          ),
-        ],
+    return GestureDetector(
+      onTap: (){
+        keyboardHidden();
+      },
+      child: Container(
+        margin: const EdgeInsets.all(15),
+        child: Column(
+          children: [
+            TextField(
+              controller: _nameController, //使用controller 监听变化
+              autofocus: true, //聚焦
+              focusNode: _nameFocusNode,
+              keyboardType: TextInputType.text, //键盘类型
+              decoration: _createDecoration('姓名','请输入姓名', Icons.person),
+            ),
+            TextField(
+              //controller:_pwdController,
+              onChanged: (value) {
+                //使用 onChanged 监听变化
+                _pwdText = value;
+              },
+              autofocus: false,
+              focusNode: _pwdFocusNode,
+              keyboardType: TextInputType.number,
+              decoration: _createDecoration('密码', '请输入密码', Icons.lock),
+            ),
+            ElevatedButton(
+              child: Text('登录'),
+              onPressed: () {
+                keyboardHidden();
+                print('name:$_nameText, pwd:$_pwdText');
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

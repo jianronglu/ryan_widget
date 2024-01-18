@@ -14,7 +14,7 @@ abstract class BasePageState<T extends StatefulWidget> extends State<T>
     return true;
   }
 
-  Widget createBackBtn() {
+  Widget _createBackBtn() {
     return IconButton(
         onPressed: () {
           Navigator.pop(context);
@@ -30,14 +30,14 @@ abstract class BasePageState<T extends StatefulWidget> extends State<T>
     return const TextStyle(fontSize: 18);
   }
 
-  AppBar createAppBar() {
+  AppBar _createAppBar() {
     return AppBar(
       title: Text(
         getTitle(),
         style: getStyle(),
       ),
       centerTitle: true,
-      leading: showBackBtn() ? createBackBtn() : null,
+      leading: showBackBtn() ? _createBackBtn() : null,
     );
   }
 
@@ -49,7 +49,7 @@ abstract class BasePageState<T extends StatefulWidget> extends State<T>
   Widget build(BuildContext context) {
     print('${runtimeType}->build');
     return Scaffold(
-      appBar: showAppBar() ? createAppBar() : null,
+      appBar: showAppBar() ? _createAppBar() : null,
       body: createBody(context),
       bottomNavigationBar: createBottomNavigationBar(),
     );
